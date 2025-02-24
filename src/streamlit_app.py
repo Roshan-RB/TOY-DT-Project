@@ -1,0 +1,27 @@
+import streamlit as st
+import requests
+
+st.title("Iris Flower Species Prediction 🌸")
+
+# Input fields
+sepal_length = st.number_input("Sepal Length", min_value=4.0, max_value=8.0, value=5.8)
+sepal_width = st.number_input("Sepal Width", min_value=2.0, max_value=4.5, value=3.0)
+petal_length = st.number_input("Petal Length", min_value=1.0, max_value=7.0, value=4.0)
+petal_width = st.number_input("Petal Width", min_value=0.1, max_value=2.5, value=1.2)
+
+# Button for prediction
+if st.button("Predict Species"):
+    input_data = {
+        "sepal_length": sepal_length,
+        "sepal_width": sepal_width,
+        "petal_length": petal_length,
+        "petal_width": petal_width
+    }
+    
+    response = requests.post("http://127.0.0.1:8000/predict", json=input_data)
+    
+    if response.status_code == 200:
+        species = response.json()["species_prediction"]
+        st.success(f"Predicted Species: **{species}**")
+    else:
+        st.error("Failed to get prediction. Please check the FastAPI server.")

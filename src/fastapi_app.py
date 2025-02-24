@@ -5,8 +5,8 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 # Load the best trained model
-model = joblib.load(r"C:\Users\rbhaskar\Desktop\decision_tree_project\models\best_decision_tree.pkl")
-scaler = joblib.load(r"C:\Users\rbhaskar\Desktop\decision_tree_project\models\scaler.pkl")
+model = joblib.load(r"C:\ML_Apps\decision_tree_project\decision_tree_project\models\best_decision_tree.pkl")
+scaler = joblib.load(r"C:\ML_Apps\decision_tree_project\decision_tree_project\models\scaler.pkl")
 
 # FastAPI instance
 app = FastAPI()

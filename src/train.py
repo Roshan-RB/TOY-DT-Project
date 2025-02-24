@@ -26,7 +26,7 @@ def tune_decision_tree():
 
     # Best model
     best_model = grid_search.best_estimator_
-    joblib.dump(best_model, r"C:\Users\rbhaskar\Desktop\decision_tree_project\models\best_decision_tree.pkl")
+    joblib.dump(best_model, r"C:\ML_Apps\decision_tree_project\decision_tree_project\models\best_decision_tree.pkl")
 
     print("Best model parameters:", grid_search.best_params_)
     print("Best model saved successfully!")

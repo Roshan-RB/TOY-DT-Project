@@ -57,7 +57,7 @@ def predict_species(data: InputData):
 
         # Predict
         prediction = model.predict(input_scaled)[0]
-        species = class_labels[int(prediction)]  # Convert number to class name
+        species = prediction if isinstance(prediction, str) else class_labels[int(prediction)]
         logger.info(f"Prediction: {species}")
 
         return {"species_prediction": species}

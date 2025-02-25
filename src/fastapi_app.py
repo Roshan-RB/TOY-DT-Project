@@ -1,12 +1,19 @@
 import joblib
 import pandas as pd
 import numpy as np
+import os
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-# Load the best trained model
-model = joblib.load(r"C:\ML_Apps\decision_tree_project\decision_tree_project\models\best_decision_tree.pkl")
-scaler = joblib.load(r"C:\ML_Apps\decision_tree_project\decision_tree_project\models\scaler.pkl")
+# Get the current directory (where fastapi_app.py is located)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Load the best trained model using a relative path
+MODEL_PATH = os.path.join(BASE_DIR, "../models/best_decision_tree.pkl")
+SCALER_PATH = os.path.join(BASE_DIR, "../models/scaler.pkl")
+
+model = joblib.load(MODEL_PATH)
+scaler = joblib.load(SCALER_PATH)
 
 # FastAPI instance
 app = FastAPI()
